@@ -17,8 +17,11 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
     features = "classpath:features",
     glue = {"com.kms.api"},
-    tags = "@product",
-    plugin = {"pretty" ,"html:target/site/cucumber-report-default", "json:target/site/cucumber.json"},
+    plugin = {
+      "pretty",
+      "html:target/site/cucumber-report-default",
+      "json:target/site/cucumber.json"
+    },
     dryRun = false,
     monochrome = true,
     snippets = CucumberOptions.SnippetType.CAMELCASE)
