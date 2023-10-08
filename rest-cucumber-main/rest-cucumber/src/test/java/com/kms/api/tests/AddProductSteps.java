@@ -35,7 +35,18 @@ public class AddProductSteps extends TestBase {
     String[] arr = feature.split(",");
     List<String> lstFeatures = Arrays.asList(arr);
     id = (int) (Math.random() * 10000);
-    contextAddProduct.put("LAPTOP_ID",this.id);
+    contextAddProduct.put("LAPTOP_ID", id);
+
+    if(brandName.equals("null")){
+      brandName = null;
+    }
+    if(feature.equals("null")){
+      feature = null;
+    }
+    if(laptopName.equals("null")){
+      laptopName = null;
+    }
+
     requestPayload = RequestBuilder.requestPayload(laptopName, brandName, id, lstFeatures);
   }
 
@@ -56,13 +67,21 @@ public class AddProductSteps extends TestBase {
   public void the_product_add_successfully_with_brand_name_as_feature_as_laptop_name_as(
       String brandName, String feature, String laptopName) {
 
+    if(brandName.equals("null")){
+      brandName = null;
+    }
+    if(feature.equals("null")){
+      feature = null;
+    }
+    if(laptopName.equals("null")){
+      laptopName = null;
+    }
     Assert.assertEquals(brandName, resAddLaptop.getBrandName());
     Assert.assertEquals(laptopName, resAddLaptop.getLaptopName());
     String actualFeature = StringUtils.join(resAddLaptop.getFeatures().getFeature(),",");
     Assert.assertEquals(feature, actualFeature);
 
   }
-
   @Then("I want to verify status code for adding product is {int}")
   public void i_want_to_verify_status_code_is(Integer expectedStatus) {
     Integer actualStatus = res.getStatusCode();
