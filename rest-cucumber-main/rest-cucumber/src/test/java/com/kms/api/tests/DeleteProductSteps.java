@@ -35,8 +35,8 @@ public class DeleteProductSteps extends TestBase {
   public void i_delete_a_laptop_with() {
     Integer delId = (Integer) AddProductSteps.contextAddProduct.get("LAPTOP_ID");
     Integer delIDErr = 9918281;
-    resDelete = RequestFactory.deleteProduct(this.path,delIDErr.intValue());
-
+    resDelete = RequestFactory.deleteProduct(this.path,delId.intValue());
+    CommonSteps.productRes = resDelete;
   }
 
   @Then("I want to verify body of delete api")
@@ -45,11 +45,5 @@ public class DeleteProductSteps extends TestBase {
     String body = String.valueOf(resDelete.getBody().prettyPrint());
     Integer delId = (Integer)AddProductSteps.contextAddProduct.get("LAPTOP_ID");
     Assert.assertEquals(body, String.valueOf(delId));
-  }
-
-  @Then("I want to verify status code for deleting product is {int}")
-  public void i_want_to_verify_status_code_is(Integer expectedStatus) {
-    Integer actualStatus = resDelete.getStatusCode();
-    org.junit.Assert.assertEquals(expectedStatus, actualStatus);
   }
 }

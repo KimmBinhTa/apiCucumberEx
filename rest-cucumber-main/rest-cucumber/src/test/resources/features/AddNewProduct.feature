@@ -7,7 +7,7 @@ Feature: Add new product
     When I perform the ADD request to add new product
     Then The product add successfully with id
     And The product add successfully with BrandName as "<brandName>", Feature as "<feature>", LaptopName as "<laptopName>"
-    And I want to verify status code for adding product is 200
+    And I want to verify status code returning is 200
     Examples:
       | testCaseID                                             | brandName | feature       | laptopName     |
       | TC01-Happy case                                        | Dell      | 8GB,SSD       | Latitude       |

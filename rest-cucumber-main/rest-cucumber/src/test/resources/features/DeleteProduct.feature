@@ -8,7 +8,7 @@ Feature: Delete product
     Given navigate to "delete/{id}" delete api
     When I perform the DELETE request to delete a laptop
     Then I want to verify body of delete api
-    And I want to verify status code for deleting product is 200
+    And I want to verify status code returning is 200
 
     Examples:
       | testCaseID | brandName | feature | laptopName |
@@ -21,4 +21,4 @@ Feature: Delete product
     Given navigate to "delete/{id}" delete api
     When I perform the DELETE request to delete a laptop
     Then I want to verify body of delete api
-    And I want to verify status code for deleting product is 200
+    And I want to verify status code returning is 200

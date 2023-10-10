@@ -9,7 +9,7 @@ Feature: Update product
     And the payload of request update with UpdateBrandName as "<brandNameUpdate>", Feature as "<feature>", LaptopName as "<laptopName>"
     When I perform the PUT request to update a product
     Then The product update successfully with brandNameUpdate as "<brandNameUpdate>"
-    And I want to verify status code for updating product is 200
+    And I want to verify status code returning is 200
     Examples:
       | testCaseID                                  | brandName | feature  | laptopName | brandNameUpdate |
       | TC01-Happy case                             | Dell      | 8GB      | Latitude   | Asus            |
@@ -30,4 +30,4 @@ Feature: Update product
     And the payload of request update with UpdateBrandName as "Dell", Feature as "8GB", LaptopName as "Latitude"
     When I perform the PUT request to update a product
     Then The product update successfully with brandNameUpdate as "Asus"
-    And I want to verify status code for updating product is 200
+    And I want to verify status code returning is 200

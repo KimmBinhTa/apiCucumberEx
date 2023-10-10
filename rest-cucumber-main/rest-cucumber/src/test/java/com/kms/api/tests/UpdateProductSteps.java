@@ -25,6 +25,7 @@ public class UpdateProductSteps extends TestBase {
 
   private Response resUpdateProduct;
 
+
   @Given(
       "the payload of request update with UpdateBrandName as {string}, Feature as {string}, LaptopName as {string}")
   public void the_payload_of_request_update_with_update_brand_name_as_feature_as_laptop_name_as(
@@ -37,7 +38,7 @@ public class UpdateProductSteps extends TestBase {
       updatedBrandName = null;
     }
     requestPayloadUpdate =
-        RequestBuilder.requestPayload(laptopName, updatedBrandName, idUpdateErr, lstFeatures);
+        RequestBuilder.requestPayload(laptopName, updatedBrandName, idUpdate, lstFeatures);
 
 
   }
@@ -47,6 +48,7 @@ public class UpdateProductSteps extends TestBase {
 
     resUpdateProduct = RequestFactory.updateProduct(this.path, (LaptopBag) requestPayloadUpdate);
     resUpdateLaptop = RestUtil.mapRestResponseToPojo(resUpdateProduct, LaptopBag.class);
+    CommonSteps.productRes = resUpdateProduct;
 
   }
 
@@ -56,12 +58,6 @@ public class UpdateProductSteps extends TestBase {
       updatedBrandName = null;
     }
     Assert.assertEquals(updatedBrandName, resUpdateLaptop.getBrandName());
-  }
-
-  @Then("I want to verify status code for updating product is {int}")
-  public void i_want_to_verify_status_code_is(Integer expectedStatus) {
-    Integer actualStatus = resUpdateProduct.getStatusCode();
-    org.junit.Assert.assertEquals(expectedStatus, actualStatus);
   }
 
   @Given("navigate to {string} updating api")
