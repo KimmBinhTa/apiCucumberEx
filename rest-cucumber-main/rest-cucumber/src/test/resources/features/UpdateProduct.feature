@@ -5,7 +5,7 @@ Feature: Update product
     Given navigate to "add" api
     And the payload of request with BrandName as "<brandName>", Feature as "<feature>", LaptopName as "<laptopName>"
     When I perform the ADD request to add new product
-    Given navigate to "update" updating api
+    Given navigate to "update" api
     And the payload of request update with UpdateBrandName as "<brandNameUpdate>", Feature as "<feature>", LaptopName as "<laptopName>"
     When I perform the PUT request to update a product
     Then The product update successfully with brandNameUpdate as "<brandNameUpdate>"
@@ -26,7 +26,7 @@ Feature: Update product
     Given navigate to "add" api
     And the payload of request with BrandName as "Dell", Feature as "8GB", LaptopName as "Latitude"
     When I perform the ADD request to add new product
-    Given navigate to "update" updating api
+    Given navigate to "update" api
     And the payload of request update with UpdateBrandName as "Dell", Feature as "8GB", LaptopName as "Latitude"
     When I perform the PUT request to update a product
     Then The product update successfully with brandNameUpdate as "Asus"

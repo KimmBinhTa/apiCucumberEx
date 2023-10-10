@@ -18,7 +18,6 @@ import org.junit.Assert;
 
 public class AddProductSteps extends TestBase {
   Response responseBody;
-  private String path = "";
   private Object requestPayload;
   private LaptopBag reqAddLaptop;
   private LaptopBag resAddLaptop;
@@ -27,10 +26,7 @@ public class AddProductSteps extends TestBase {
 
   public static Map<String, Object> contextAddProduct = new HashMap<String, Object>();
 
-  @Given("navigate to {string} api")
-  public void navigateToApi(String path) {
-    this.path = path;
-  }
+
   @Given(
       "the payload of request with BrandName as {string}, Feature as {string}, LaptopName as {string}")
   public void the_payload_of_request_with_brand_name_as_feature_as_laptop_name_as(
@@ -55,7 +51,7 @@ public class AddProductSteps extends TestBase {
 
   @When("I perform the ADD request to add new product")
   public void i_perform_the_add_request_to_add_new_product() {
-    res = RequestFactory.addProduct(this.path, (LaptopBag) requestPayload);
+    res = RequestFactory.addProduct(CommonSteps.path, (LaptopBag) requestPayload);
     resAddLaptop = RestUtil.mapRestResponseToPojo(res, LaptopBag.class);
     CommonSteps.productRes = res;
   }

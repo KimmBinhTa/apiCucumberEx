@@ -16,7 +16,6 @@ public class DeleteProductSteps extends TestBase {
 
   Response responseBody;
   private Integer id;
-  private String path = "";
   private Object requestPayloadAdd;
   private Object requestPayloadDelete;
   private LaptopBag resDeleteLaptop;
@@ -26,16 +25,11 @@ public class DeleteProductSteps extends TestBase {
   private Response resAdd;
 
 
-  @Given("navigate to {string} delete api")
-  public void navigate_to_delete_api(String path) {
-    this.path = path;
-  }
-
   @When("I perform the DELETE request to delete a laptop")
   public void i_delete_a_laptop_with() {
     Integer delId = (Integer) AddProductSteps.contextAddProduct.get("LAPTOP_ID");
     Integer delIDErr = 9918281;
-    resDelete = RequestFactory.deleteProduct(this.path,delId.intValue());
+    resDelete = RequestFactory.deleteProduct(CommonSteps.path,delId.intValue());
     CommonSteps.productRes = resDelete;
   }
 

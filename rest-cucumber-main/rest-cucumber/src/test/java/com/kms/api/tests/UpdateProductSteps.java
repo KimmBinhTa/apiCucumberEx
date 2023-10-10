@@ -16,7 +16,6 @@ public class UpdateProductSteps extends TestBase {
 
   Response responseBody;
   private Integer id;
-  private String path = "";
   private Object requestPayloadAdd;
   private Object requestPayloadUpdate;
   private LaptopBag resUpdateLaptop;
@@ -46,7 +45,7 @@ public class UpdateProductSteps extends TestBase {
   @When("I perform the PUT request to update a product")
   public void i_perform_the_put_request_to_update_a_product() {
 
-    resUpdateProduct = RequestFactory.updateProduct(this.path, (LaptopBag) requestPayloadUpdate);
+    resUpdateProduct = RequestFactory.updateProduct(CommonSteps.path, (LaptopBag) requestPayloadUpdate);
     resUpdateLaptop = RestUtil.mapRestResponseToPojo(resUpdateProduct, LaptopBag.class);
     CommonSteps.productRes = resUpdateProduct;
 
@@ -60,8 +59,4 @@ public class UpdateProductSteps extends TestBase {
     Assert.assertEquals(updatedBrandName, resUpdateLaptop.getBrandName());
   }
 
-  @Given("navigate to {string} updating api")
-  public void navigate_to_updating_api(String path) {
-    this.path = path;
-  }
 }
