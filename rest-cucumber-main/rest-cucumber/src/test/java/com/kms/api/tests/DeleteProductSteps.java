@@ -35,7 +35,6 @@ public class DeleteProductSteps extends TestBase {
 
   @Then("I want to verify body of delete api")
   public void i_want_to_verify_body_of_delete_api() {
-    // String body = res.getBody().asString();
     String body = String.valueOf(resDelete.getBody().prettyPrint());
     Integer delId = (Integer)AddProductSteps.contextAddProduct.get("LAPTOP_ID");
     Assert.assertEquals(body, String.valueOf(delId));

@@ -6,7 +6,7 @@ import io.restassured.response.Response;
 
 public class CommonSteps {
     static Response productRes;
-    public  static String path = "";
+    public static String path = "";
 
     @Then("I want to verify status code returning is {int}")
     public void i_want_to_verify_status_code_is(Integer expectedStatus) {
